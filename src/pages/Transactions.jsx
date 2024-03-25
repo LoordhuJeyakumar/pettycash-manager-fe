@@ -12,6 +12,7 @@ function Transactions() {
   const accountsState = useSelector((state) => state.account);
   const dispatch = useDispatch();
 
+  const [gridApi, setGridApi] = useState(null);
   const [rowData, setRowData] = useState("");
   const [colDefs, setColDefs] = useState([
     { field: "accountName" },
@@ -83,7 +84,7 @@ function Transactions() {
   const getAllTRansactions = async () => {
     try {
       let res = await transactionsService.getAllTransactions();
-     
+
       if (res.status === 200) {
         dispatch({
           type: "SET_ALL_TRANSACTIONS",
@@ -110,17 +111,22 @@ function Transactions() {
   };
   useEffect(() => {
     getAllTRansactions();
+    if (transactionsState?.allTransactions?.allTransactionsDetails) {
+      gridApi.updateGridOptions(
+        transactionsState?.allTransactions?.allTransactionsDetails
+      );
+    }
   }, []);
 
   const getAccountName = async (id) => {
     const res = await accountService.getAccountById(id);
 
-    return res?.data?.accountById.acc_Name;
+    return res?.data?.accountById?.acc_Name;
   };
   const getUserName = async (id) => {
     const res = await authService.getUserDetails(id);
 
-    return res?.user.name;
+    return res?.user?.name;
   };
 
   const getData = async (arr) => {
@@ -161,7 +167,7 @@ function Transactions() {
                 {" "}
                 <h3 className="text-center">Transaction Details</h3>
                 <div className="d-flex justify-content-between p-0 m-0">
-                  <p>
+                  <span>
                     No of transactions :{" "}
                     {transactionsState?.allTransactionsSummery ? (
                       transactionsState?.allTransactionsSummery[0]
@@ -175,8 +181,8 @@ function Transactions() {
                         <span className="visually-hidden">Loading...</span>
                       </div>
                     )}
-                  </p>
-                  <p>
+                  </span>
+                  <span>
                     Total Transactions value :{" "}
                     {transactionsState?.allTransactionsSummery ? (
                       transactionsState?.allTransactionsSummery[0]?.totalAmount
@@ -189,18 +195,17 @@ function Transactions() {
                         <span className="visually-hidden">Loading...</span>
                       </div>
                     )}
-                  </p>
+                  </span>
                 </div>
               </div>
               <div className="card-body text-white">
-                <div
-                  className="ag-theme-quartz-dark" 
-                  style={{ height: 500 }}
-                >
+                <div className="ag-theme-quartz-dark" style={{ height: 500 }}>
                   <AgGridReact
+                    onGridReady={(params) => setGridApi(params.api)}
                     rowData={rowData}
                     columnDefs={colDefs}
                     pagination={true}
+                    animateRows={true}
                     components={{
                       downloadButtonCellRenderer: DownloadButtonCellRenderer,
                     }}
