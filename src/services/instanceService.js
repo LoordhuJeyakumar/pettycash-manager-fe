@@ -1,7 +1,10 @@
 import axios from "axios";
 
 // define the base url for the api
-const baseURL = `http://localhost:3333/api/v1/`;
+let isCloud = true;
+const baseURL = isCloud
+  ? "https://pettycash-manager-be.onrender.com/api/v1/"
+  : `http://localhost:3333/api/v1/`;
 
 // define the instance
 const authInstance = axios.create({
