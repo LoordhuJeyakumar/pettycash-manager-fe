@@ -1,8 +1,30 @@
-# React + Vite
+# PettyCash Manager Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
+PettyCash Manager is a user-friendly web application designed to simplify the management of petty cash funds. With a focus on ease of use, this tool allows users to track expenses, manage reimbursements, and generate reports with ease.
 
-Currently, two official plugins are available:
+## Features
+- **Expense Tracking**: Log and categorize every transaction.
+- **Reimbursements**: Easily handle cash reimbursements.
+- **Reporting**: Generate detailed reports for better financial oversight.
+- **User Management**: Control access with a secure user management system.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- React.js
+- Redux for state management
+- Material-UI for component library
+- Axios for API requests
+
+## Getting Started
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+- Node.js
+- npm
+
+```bash
+# Verify Node.js installation
+node --version
+
+# Verify npm installation
+npm --version
