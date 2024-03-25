@@ -53,7 +53,7 @@ const authService = {
 
       return response;
     } catch (error) {
-      comsole.error(error);
+      console.error(error);
       return error.response;
     }
   },
