@@ -71,7 +71,7 @@ const authService = {
 
       return response;
     } catch (error) {
-      comsole.error(error);
+      console.error(error);
       if (!error?.response) {
         console.error("No server response", error);
         return error;
@@ -94,7 +94,7 @@ const authService = {
 
       return response.data;
     } catch (error) {
-      comsole.error(error);
+      console.error(error);
       return error;
     }
   },
@@ -107,7 +107,7 @@ const authService = {
 
       return response;
     } catch (error) {
-      comsole.error(error);
+      console.error(error);
       return error;
     }
   },
@@ -121,7 +121,7 @@ const authService = {
         return response;
       }
     } catch (error) {
-      comsole.error(error);
+      console.error(error);
       return error;
     }
   },
@@ -134,7 +134,7 @@ const authService = {
         return response;
       }
     } catch (error) {
-      comsole.error(error);
+      console.error(error);
       return error;
     }
   },
@@ -147,7 +147,7 @@ const authService = {
         return response;
       }
     } catch (error) {
-      comsole.error(error);
+      console.error(error);
       return error;
     }
   },
